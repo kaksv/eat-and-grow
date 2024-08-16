@@ -1,0 +1,261 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  list-style-type: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --text-color: #f2f2f2;
+  --accent-color: #0b1533;
+  --snake-color: #00abf0;
+  --food-color: #f00;
+}
+
+body {
+  background: url(https://i.ibb.co/1bdzdTz/Background-Image.jpg);
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-blend-mode: multiply;
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  padding: 1.3rem;
+  width: 100%;
+  height: 100%;
+  color: var(--text-color);
+}
+
+.overlay-screen {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 90vw;
+  height: 90vw;
+  max-width: 600px;
+  max-height: 600px;
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  padding: 20px;
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.gameover-screen {
+  display: none;
+  transform: scale(1);
+}
+
+.start-screen img {
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  user-select: none;
+  border-radius: 0.4rem;
+  margin-bottom: 0.5rem;
+  animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+  10%,
+  20%,
+  30%,
+  40%,
+  100% {
+    filter: drop-shadow(1.5px 1.5px 10px #3498db);
+  }
+
+  15%,
+  25%,
+  35% {
+    filter: none;
+  }
+}
+
+.overlay-screen h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.overlay-screen p {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.buttons {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  background-color: #3498db;
+  color: var(--text-color);
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.buttons:hover {
+  background-color: #2980b9;
+}
+
+.score-container {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background-color: #35356a;
+  border: 1px solid var(--text-color);
+}
+
+.score-container button {
+  display: inline-flex;
+  background: #3498db;
+  border-radius: 3px;
+  padding: 0.2rem;
+  height: 100%;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 01, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.custom-icon {
+  color: var(--accent-color);
+}
+
+.play-icon {
+  display: none;
+}
+
+.score-container h1 {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.score-container h1 span {
+  font-weight: 600;
+}
+
+.game-container {
+  width: 85vw;
+  height: 85vw;
+  max-width: 550px;
+  max-height: 550px;
+  display: none;
+  padding: 0.5px;
+  grid-template-columns: repeat(30, minmax(auto, 1fr));
+  grid-template-rows: repeat(30, minmax(auto, 1fr));
+  background-color: var(--accent-color);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--text-color);
+}
+
+.snake,
+.food {
+  width: 100%;
+  height: 100%;
+  background-color: var(--snake-color);
+}
+
+.food {
+  background-color: var(--food-color);
+}
+
+.gameover-screen img {
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  user-select: none;
+  border-radius: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-controls {
+  display: none;
+  width: 150px;
+  margin: 5rem auto auto;
+  place-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0;
+  grid-template-areas:
+    '. up-btn .'
+    'left-btn . right-btn'
+    '. down-btn .';
+}
+.up-btn {
+  grid-area: up-btn;
+}
+.left-btn {
+  grid-area: left-btn;
+}
+.right-btn {
+  grid-area: right-btn;
+}
+.down-btn {
+  grid-area: down-btn;
+}
+
+.mobile-controls button {
+  background: #3498db;
+  font-size: 3rem;
+  text-align: center;
+  padding: 0.5rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 1rem;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .overlay-screen img {
+    width: 60%;
+    height: 60%;
+    max-height: 300px;
+  }
+
+  .overlay-screen {
+    font-size: 1.5rem;
+  }
+
+  .overlay-screen {
+    font-size: 1rem;
+  }
+
+  .buttons {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .score-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .mobile-controls {
+    display: none;
+  }
+}
